@@ -6,14 +6,19 @@ const ModalDiv = styled.div`
 `
 
 const ModaBtn1 = styled.button`
-    width: 100px;
-    height: 40px;
-    margin: 5px 5px;
-    border-radius: 5px;
-    border: 3px solid green;
-    background-color: green;
-    color: white;
-    cursor: pointer;
+  width: 100px;
+  height: 40px;
+  margin: 5px 5px;
+  border-radius: 5px;
+  border: 3px solid green;
+  background-color: green;
+  color: white;
+  cursor: pointer;
+
+  &:active {
+    background-color: darkgreen;
+    border-color: darkgreen;
+  }
 `
 
 const ModaBtn2 = styled.button`
@@ -25,6 +30,10 @@ const ModaBtn2 = styled.button`
   background-color: white;
   font-weight: 700;
   cursor: pointer;
+
+  &:active {
+    background-color: #e3e3e3;
+  }
 `
 
 // 📍구현 예정

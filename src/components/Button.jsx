@@ -19,6 +19,14 @@ const ButtonL1 = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  // &:active - ButtonS2가 활성화되면 {}를 적용시켜라!
+  // & : ButtonS2를 지칭, 부모(상위) 선택자
+  // 활성화 상태: onClick을 예로 들면 클릭해서 떼는 시점까지를 말함
+  // 참고 : https://webclub.tistory.com/396
+  &:active {
+    background-color: #e3e3e3;
+  }
 `
 
 const ButtonM1 = styled.button`
@@ -30,6 +38,11 @@ const ButtonM1 = styled.button`
   background-color: green;
   color: white;
   cursor: pointer;
+
+  &:active {
+    background-color: darkgreen;
+    border-color: darkgreen;
+  }
 `
 
 const ButtonS1 = styled.button`
@@ -41,6 +54,11 @@ const ButtonS1 = styled.button`
   background-color: green;
   color: white;
   cursor: pointer;
+
+  &:active {
+    background-color: darkgreen;
+    border-color: darkgreen;
+  }
 `
 
 const ButtonL2 = styled.button`
@@ -56,6 +74,10 @@ const ButtonL2 = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  &:active {
+    background-color: #e3e3e3;
+  }
 `
 
 const ButtonM2 = styled.button`
@@ -67,6 +89,11 @@ const ButtonM2 = styled.button`
   background-color: Orange;
   color: white;
   cursor: pointer;
+
+  &:active {
+    background-color: darkorange;
+    border-color: darkorange;
+  }
 `
 
 const ButtonS2 = styled.button`
@@ -78,12 +105,17 @@ const ButtonS2 = styled.button`
   background-color: Orange;
   color: white;
   cursor: pointer;
+
+  &:active {
+    background-color: darkorange;
+    border-color: darkorange;
+  }
 `
 
-// 📍구현 예정
-// 클릭할 때 버튼 색상 변경
-
 const Button = () => {
+
+
+
   return (
     <div>
       <h1>Button</h1>
