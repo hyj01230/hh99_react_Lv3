@@ -16,12 +16,14 @@ const ButtonL1 = styled.button`
   font-weight: 700;
   cursor: pointer;
   
+  // 내용물 정렬
   display: flex;
+  flex-direction : row;
   justify-content: center;
   align-items: center;
 
-  // &:active - ButtonS2가 활성화되면 {}를 적용시켜라!
-  // & : ButtonS2를 지칭, 부모(상위) 선택자
+  // &:active - ButtonL1이 활성화되면 {}를 적용시켜라!
+  // & : ButtonL1을 지칭, 부모(상위) 선택자
   // 활성화 상태: onClick을 예로 들면 클릭해서 떼는 시점까지를 말함
   // 참고 : https://webclub.tistory.com/396
   &:active {
@@ -72,6 +74,7 @@ const ButtonL2 = styled.button`
   cursor: pointer;
 
   display: flex;
+  flex-direction : row;
   justify-content: center;
   align-items: center;
 
@@ -113,8 +116,6 @@ const ButtonS2 = styled.button`
 `
 
 const Button = () => {
-
-
 
   return (
     <div>
