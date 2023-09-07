@@ -1,9 +1,6 @@
 import React, { useState } from 'react'
 import { styled } from 'styled-components'
 
-// 📍구현 예정
-// 모달2 : 외부 영역 클릭하면 화면 닫기
-
 const Modal = () => {
 
   // 모달창 상태관리

@@ -3,8 +3,6 @@ import { styled } from 'styled-components'
 import { VscChevronRight, VscBellDot } from "react-icons/vsc";
 
 function Button() {
-
-
   return (
     <div>
       <h1>Button</h1>

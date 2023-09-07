@@ -28,34 +28,35 @@ const Select = () => {
   // 두번째 셀렉트바 뒤로 숨겨지기!
 
   return (
-    <Slectwrap>
-      <h1>Select</h1>
-      <SelectDivOut>
-        <SelectDivIn>
-          <SelectBar onClick={clickDrop1}>{barTitle1} <BiSolidDownArrow /></SelectBar>
-          {selectDrop1 && (
-            <DropDiv1>
-              <LiTop onClick={() => closeDrop1('리액트')}>리액트</LiTop>
-              <LiMiddle onClick={() => closeDrop1('자바')}>자바</LiMiddle>
-              <LiMiddle onClick={() => closeDrop1('스프링')}>스프링</LiMiddle>
-              <LiBottom onClick={() => closeDrop1('리액트네이티브')}>리액트네이티브</LiBottom>
-            </DropDiv1>
-          )}
-        </SelectDivIn>
-        <SelectDivIn>
-          <SelectBar onClick={clickDrop2}>{barTitle2} <BiSolidDownArrow /></SelectBar>
-          {selectDrop2 && (
-            <DropDiv2>
-              <LiTop onClick={() => closeDrop2('리액트')}>리액트</LiTop>
-              <LiMiddle onClick={() => closeDrop2('자바')}>자바</LiMiddle>
-              <LiMiddle onClick={() => closeDrop2('스프링')}>스프링</LiMiddle>
-              <LiBottom onClick={() => closeDrop2('리액트네이티브')}>리액트네이티브</LiBottom>
-            </DropDiv2>
-          )}
-        </SelectDivIn>
-      </SelectDivOut>
-    </Slectwrap>
-
+    <>
+      <Slectwrap>
+        <h1>Select</h1>
+        <div>
+          <SelectDiv>
+            <SelectBar onClick={clickDrop1}>{barTitle1} <BiSolidDownArrow /></SelectBar>
+            <SelectBar onClick={clickDrop2}>{barTitle2} <BiSolidDownArrow /></SelectBar>
+          </SelectDiv>
+          <SelectDiv>
+            {selectDrop1 && (
+              <DropDiv1>
+                <Li1 onClick={() => closeDrop1('리액트')}>리액트</Li1>
+                <Li1 onClick={() => closeDrop1('자바')}>자바</Li1>
+                <Li1 onClick={() => closeDrop1('스프링')}>스프링</Li1>
+                <Li1 onClick={() => closeDrop1('리액트네이티브')}>리액트네이티브</Li1>
+              </DropDiv1>
+            )}
+            {selectDrop2 && (
+              <DropDiv2>
+                <Li2 onClick={() => closeDrop2('리액트')}>리액트</Li2>
+                <Li2 onClick={() => closeDrop2('자바')}>자바</Li2>
+                <Li2 onClick={() => closeDrop2('스프링')}>스프링</Li2>
+                <Li2 onClick={() => closeDrop2('리액트네이티브')}>리액트네이티브</Li2>
+              </DropDiv2>
+            )}
+          </SelectDiv>
+        </div>
+      </Slectwrap>
+    </>
   )
 }
 
@@ -68,26 +69,18 @@ const Slectwrap = styled.div`
   position: relative;
 `
 
-const SelectDivOut = styled.div`
+const SelectDiv = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  position: relative;
-`
-
-const SelectDivIn = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
+  /* flex-direction: row; */
+  /* justify-content: flex-start; */
+  /* align-items: center; */
 `
 
 const SelectBar = styled.div`
   border: 1px solid lightgray;
   border-radius: 10px;
   width: 250px;
-  height: 40px;
+  height: 50px;
   margin-right: 5px;
   margin-bottom: 50px;
 
@@ -97,61 +90,52 @@ const SelectBar = styled.div`
   // padding값이 박스 크기(width, height)에 영향을 주지 않음
   box-sizing: border-box;
   padding: 0px 30px;
+  position: relative;
 `
 
-const DropDiv1 = styled.div`
-	margin-right: 10px;
-	position: absolute;
-	margin-top: 50px;
+const DropDiv1 = styled.ul`
+  background-color: white;
+  border: 1px solid #e8e8e8;
+  width: 250px;
+  border-radius: 15px;
+  padding-left: 0; // 들여쓰기 제거
+  margin-right: 5px;
+  left: 5px; // 위치조정
+  top: 125px;
+  position: absolute;
+  
 `
 
-const DropDiv2 = styled.div`
-	margin-right: 10px;
-	position: absolute;
-	margin-top: 50px;
+const DropDiv2 = styled.ul`
+  background-color: white;
+  border: 1px solid #e8e8e8;
+  width: 250px;
+  border-radius: 15px;
+  padding-left: 0; // 들여쓰기 제거
+  margin-right: 5px;
+  left: 258px; // 위치조정
+  top: 125px;
+  position: absolute;
 `
 
-const LiTop = styled.li`
+const Li1 = styled.li`
 	list-style: none;
-	width: 210px;
-  	height: 30px;
-	padding: 10px 18px;
-	background-color: white;
-	border-radius: 10px 10px 0px 0px;
-	border-color: #e8e8e8;
-	border-width: 1px 1px 1px 1px;
-	border-style: solid solid none solid;
+  height: 30px;
+  padding: 10px 10px;
+  border-radius: 15px;
+  background-color: white;
 
 	&:hover {
     background-color: #e8e8e8;
   }
 `
 
-const LiMiddle = styled.li`
+const Li2 = styled.li`
 	list-style: none;
-	width: 210px;
   height: 30px;
-	padding: 10px 18px;
-	background-color: white;
-	border-color: #e8e8e8;
-	border-width: 1px 1px 1px 1px;
-	border-style: none solid none solid;
-
-	&:hover {
-    background-color: #e8e8e8;
-  }
-`
-
-const LiBottom = styled.li`
-	list-style: none;
-	width: 210px;
-  height: 30px;
-	padding: 10px 18px;
-	background-color: white;
-	border-radius: 0px 0px 10px 10px;
-	border-color: #e8e8e8;
-	border-width: 1px 1px 1px 1px;
-	border-style: none solid solid solid;
+  padding: 10px 10px;
+  border-radius: 15px;
+  background-color: white;
 
 	&:hover {
     background-color: #e8e8e8;
