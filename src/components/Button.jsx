@@ -2,6 +2,32 @@ import React from 'react'
 import { styled } from 'styled-components'
 import { VscChevronRight, VscBellDot } from "react-icons/vsc";
 
+function Button() {
+
+
+  return (
+    <div>
+      <h1>Button</h1>
+      <ButtonDiv>
+        <ButtonL1 onClick={() => {
+          alert('버튼을 만들어보세요')
+        }}>Large Primary Button &nbsp;<VscChevronRight style={{ fontSize: '13px' }} /></ButtonL1>
+        <ButtonM1>Medium</ButtonM1>
+        <ButtonS1>Small</ButtonS1>
+      </ButtonDiv>
+      <ButtonDiv>
+        <ButtonL2 onClick={() => {
+          prompt('어렵나요?')
+        }}>Large Negative Button &nbsp;<VscBellDot style={{ fontSize: '16px' }} /></ButtonL2>
+        <ButtonM2>Medium</ButtonM2>
+        <ButtonS2>Small</ButtonS2>
+      </ButtonDiv>
+    </div>
+  )
+}
+
+export default Button
+
 const ButtonDiv = styled.div`
   display: flex;
 `
@@ -114,28 +140,3 @@ const ButtonS2 = styled.button`
     border-color: darkorange;
   }
 `
-
-const Button = () => {
-
-  return (
-    <div>
-      <h1>Button</h1>
-      <ButtonDiv>
-        <ButtonL1 onClick={() => {
-          alert('버튼을 만들어보세요')
-        }}>Large Primary Button &nbsp;<VscChevronRight style={{ fontSize: '13px' }} /></ButtonL1>
-        <ButtonM1>Medium</ButtonM1>
-        <ButtonS1>Small</ButtonS1>
-      </ButtonDiv>
-      <ButtonDiv>
-        <ButtonL2 onClick={() => {
-          prompt('어렵나요?')
-        }}>Large Negative Button &nbsp;<VscBellDot style={{ fontSize: '16px' }} /></ButtonL2>
-        <ButtonM2>Medium</ButtonM2>
-        <ButtonS2>Small</ButtonS2>
-      </ButtonDiv>
-    </div>
-  )
-}
-
-export default Button
