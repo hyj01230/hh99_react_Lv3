@@ -43,9 +43,6 @@ const Select = () => {
     setBarTitle2(name);
   }
 
-  // 📍구현 예정
-  // 두번째 셀렉트바 뒤로 숨겨지기!
-
   return (
     <>
       <Slectwrap onClick={handleOutsideClick}>
