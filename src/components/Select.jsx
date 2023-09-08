@@ -4,15 +4,17 @@ import { BiSolidDownArrow } from "react-icons/bi";
 
 const Select = () => {
 
+  // useState를 사용하여 상태값 초기화
   const [selectDrop1, setSelectDrop1] = useState(false)
   const [selectDrop2, setSelectDrop2] = useState(false)
 
+  // 셀렉트 박스 열고 닫는 함수 정의
   const toggleDrop1 = () => {
-    if (selectDrop1) {
-      setSelectDrop1(false);
-    } else {
-      setSelectDrop1(true);
-      setSelectDrop2(false);
+    if (selectDrop1) { // 드롭1이 투르면 = 열려있으면
+      setSelectDrop1(false);  // 드롭1 닫고,
+    } else {  // 그렇지 않으면 = 드롭1 닫혀있으면
+      setSelectDrop1(true);  // 드롭1 열고,
+      setSelectDrop2(false);  // 드롭2 닫아라
     }
   };
 
@@ -25,17 +27,19 @@ const Select = () => {
     }
   };
 
+  // 셀렉트 박스 외부 클릭 시 닫는 함수 정의
   const handleOutsideClick = () => {
     setSelectDrop1(false);
     setSelectDrop2(false);
   };
 
+  // 상태값을 업데이트하여 선택한 항목 표시
   const [barTitle1, setBarTitle1] = useState('리액트')
   const [barTitle2, setBarTitle2] = useState('리액트')
 
   const closeDrop1 = (name) => {
-    setSelectDrop1(false);
-    setBarTitle1(name);
+    setSelectDrop1(false);  // 드롭1 닫고
+    setBarTitle1(name);  // 선탣한 항목으로 타이틀이 바뀜
   }
 
   const closeDrop2 = (name) => {
@@ -48,7 +52,8 @@ const Select = () => {
       <Slectwrap onClick={handleOutsideClick}>
         <h1>Select</h1>
         <div>
-          <SelectDiv onClick={(evet) => evet.stopPropagation()}>
+          {/*  이벤트 버블링을 방지 */}
+          <SelectDiv onClick={(evet) => evet.stopPropagation()}> 
             <SelectBar onClick={toggleDrop1}>{barTitle1} <BiSolidDownArrow /></SelectBar>
             <SelectBar onClick={toggleDrop2}>{barTitle2} <BiSolidDownArrow /></SelectBar>
           </SelectDiv>
