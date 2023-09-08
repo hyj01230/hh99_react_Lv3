@@ -1,6 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react';
 import { styled } from 'styled-components'
-import { useState } from 'react'
 import { BiSolidDownArrow } from "react-icons/bi";
 
 const Select = () => {
@@ -8,8 +7,28 @@ const Select = () => {
   const [selectDrop1, setSelectDrop1] = useState(false)
   const [selectDrop2, setSelectDrop2] = useState(false)
 
-  const clickDrop1 = () => { setSelectDrop1(true), setSelectDrop2(false) }
-  const clickDrop2 = () => { setSelectDrop1(false), setSelectDrop2(true) }
+  const toggleDrop1 = () => {
+    if (selectDrop1) {
+      setSelectDrop1(false);
+    } else {
+      setSelectDrop1(true);
+      setSelectDrop2(false);
+    }
+  };
+
+  const toggleDrop2 = () => {
+    if (selectDrop2) {
+      setSelectDrop2(false);
+    } else {
+      setSelectDrop2(true);
+      setSelectDrop1(false);
+    }
+  };
+
+  const handleOutsideClick = () => {
+    setSelectDrop1(false);
+    setSelectDrop2(false);
+  };
 
   const [barTitle1, setBarTitle1] = useState('리액트')
   const [barTitle2, setBarTitle2] = useState('리액트')
@@ -29,12 +48,12 @@ const Select = () => {
 
   return (
     <>
-      <Slectwrap>
+      <Slectwrap onClick={handleOutsideClick}>
         <h1>Select</h1>
         <div>
-          <SelectDiv>
-            <SelectBar onClick={clickDrop1}>{barTitle1} <BiSolidDownArrow /></SelectBar>
-            <SelectBar onClick={clickDrop2}>{barTitle2} <BiSolidDownArrow /></SelectBar>
+          <SelectDiv onClick={(evet) => evet.stopPropagation()}>
+            <SelectBar onClick={toggleDrop1}>{barTitle1} <BiSolidDownArrow /></SelectBar>
+            <SelectBar onClick={toggleDrop2}>{barTitle2} <BiSolidDownArrow /></SelectBar>
           </SelectDiv>
           <SelectDiv>
             {selectDrop1 && (
@@ -64,16 +83,15 @@ export default Select
 
 const Slectwrap = styled.div`
   border: 2px solid lightgray;
+  height: 220px;
   margin: 40px 5px 5px 5px;
   padding: 0px 3px;
   position: relative;
+  overflow: hidden;
 `
 
 const SelectDiv = styled.div`
   display: flex;
-  /* flex-direction: row; */
-  /* justify-content: flex-start; */
-  /* align-items: center; */
 `
 
 const SelectBar = styled.div`
@@ -82,7 +100,6 @@ const SelectBar = styled.div`
   width: 250px;
   height: 50px;
   margin-right: 5px;
-  margin-bottom: 50px;
 
   display: flex;
   justify-content: space-between;
@@ -90,7 +107,6 @@ const SelectBar = styled.div`
   // padding값이 박스 크기(width, height)에 영향을 주지 않음
   box-sizing: border-box;
   padding: 0px 30px;
-  position: relative;
 `
 
 const DropDiv1 = styled.ul`
@@ -100,10 +116,10 @@ const DropDiv1 = styled.ul`
   border-radius: 15px;
   padding-left: 0; // 들여쓰기 제거
   margin-right: 5px;
-  left: 5px; // 위치조정
-  top: 125px;
-  position: absolute;
-  
+  left: 17px; // 위치조정
+  top: 646px;
+  // position:fixed(부모 오버플로를 무시하게 함)
+  position: fixed;
 `
 
 const DropDiv2 = styled.ul`
@@ -116,7 +132,7 @@ const DropDiv2 = styled.ul`
   left: 258px; // 위치조정
   top: 125px;
   position: absolute;
-`
+  `
 
 const Li1 = styled.li`
 	list-style: none;
